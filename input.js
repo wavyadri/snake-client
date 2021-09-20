@@ -18,6 +18,9 @@ const handleUserInput = (key) => {
   if (key === 'd') {
     connection.write('Move: right');
   }
+  if (key === 'm') {
+    connection.write('Say: heyoooo');
+  }
 };
 
 // setup interface to handle user input from stdin
