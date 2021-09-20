@@ -1,25 +1,27 @@
+const { UP, DOWN, LEFT, RIGHT, MESSAGES } = require('./constants');
+
 let connection;
 
-const handleUserInput = (key) => {
-  if (key === '\u0003') {
+const handleUserInput = (data) => {
+  if (data === '\u0003') {
     console.log('exiting server');
     process.exit();
   }
 
-  if (key === 'w') {
-    connection.write('Move: up');
+  if (data === 'w') {
+    connection.write(UP);
   }
-  if (key === 'a') {
-    connection.write('Move: left');
+  if (data === 'a') {
+    connection.write(LEFT);
   }
-  if (key === 's') {
-    connection.write('Move: down');
+  if (data === 's') {
+    connection.write(DOWN);
   }
-  if (key === 'd') {
-    connection.write('Move: right');
+  if (data === 'd') {
+    connection.write(RIGHT);
   }
-  if (key === 'm') {
-    connection.write('Say: heyoooo');
+  if (data in MESSAGES) {
+    connection.write(MESSAGES[data]);
   }
 };
 
